@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latihan_pak_ary_bagian_3/components/custom_bottom_bar.dart';
 
 class Tugas31 extends StatelessWidget {
   const Tugas31({super.key});
@@ -14,6 +15,7 @@ class Tugas31 extends StatelessWidget {
               fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
+      bottomNavigationBar: const CustomBottomBar(),
       body: Padding(
           padding: const EdgeInsets.only(
             top: 16,
@@ -96,6 +98,11 @@ class Tugas31 extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushNamed('/tugas-3-2'),
+                child: const Text('Ke tugas 3.2'),
+              )
             ],
           )),
     );
