@@ -15,7 +15,9 @@ class Tugas31 extends StatelessWidget {
               fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
-      bottomNavigationBar: const CustomBottomBar(),
+      bottomNavigationBar: const CustomBottomBar(
+        currentIndex: 0,
+      ),
       body: Padding(
           padding: const EdgeInsets.only(
             top: 16,
@@ -98,11 +100,6 @@ class Tugas31 extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () => Navigator.of(context).pushNamed('/tugas-3-2'),
-                child: const Text('Ke tugas 3.2'),
-              )
             ],
           )),
     );

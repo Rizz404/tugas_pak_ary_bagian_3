@@ -9,14 +9,47 @@ class Tugas32 extends StatefulWidget {
 }
 
 class _Tugas32State extends State<Tugas32> {
-  List<String> images = [
-    "https://i.pinimg.com/236x/9c/c0/38/9cc0388eb7fd5d1440423247ef522c81.jpg",
-    "https://i.pinimg.com/236x/9c/c0/38/9cc0388eb7fd5d1440423247ef522c81.jpg",
-    "https://i.pinimg.com/236x/9c/c0/38/9cc0388eb7fd5d1440423247ef522c81.jpg",
-    "https://i.pinimg.com/236x/9c/c0/38/9cc0388eb7fd5d1440423247ef522c81.jpg",
-    "https://i.pinimg.com/236x/9c/c0/38/9cc0388eb7fd5d1440423247ef522c81.jpg",
-    "https://i.pinimg.com/236x/9c/c0/38/9cc0388eb7fd5d1440423247ef522c81.jpg",
-    "https://i.pinimg.com/236x/9c/c0/38/9cc0388eb7fd5d1440423247ef522c81.jpg",
+  List<Map<String, dynamic>> items = [
+    {
+      'text': "COVID-19 Vaccine",
+      'background': Colors.yellow[700], // Sesuaikan warna lebih cerah
+      'logo': "assets/images/id-card.png"
+    },
+    {
+      'text': "Covid-19 Test Results",
+      'background': Colors.red[600],
+      'logo': "assets/images/result.png"
+    },
+    {
+      'text': "EHAC",
+      'background': Colors.green[500],
+      'logo': "assets/images/shield.png"
+    },
+    {
+      'text': "Travel Regulations",
+      'background': Colors.green[500],
+      'logo': "assets/images/travel-bag.png"
+    },
+    {
+      'text': "Telemedicine",
+      'background': Colors.yellow[700],
+      'logo': "assets/images/stetoscope.png"
+    },
+    {
+      'text': "Healthcare Facility",
+      'background': Colors.green[500],
+      'logo': "assets/images/hospital.png"
+    },
+    {
+      'text': "COVID-19 Statistic",
+      'background': Colors.red[600],
+      'logo': "assets/images/analytics.png"
+    },
+    {
+      'text': "Find Hospital Bed",
+      'background': Colors.yellow[700],
+      'logo': "assets/images/hospital-bed.png"
+    },
   ];
 
   @override
@@ -24,9 +57,14 @@ class _Tugas32State extends State<Tugas32> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Text('Peduli lindungi'),
+        title: const Text(
+          'Peduli lindungi',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
-      bottomNavigationBar: const CustomBottomBar(),
+      bottomNavigationBar: const CustomBottomBar(
+        currentIndex: 1,
+      ),
       body: Padding(
         padding: const EdgeInsets.only(
           top: 8,
@@ -108,26 +146,28 @@ class _Tugas32State extends State<Tugas32> {
             // * Masalah overflow literally cuma expanded solusinya
             Expanded(
               child: GridView.builder(
-                  itemCount: images.length,
+                  itemCount: items.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    crossAxisSpacing: 16,
-                    mainAxisSpacing: 16,
-                    childAspectRatio: 1,
+                    crossAxisSpacing: 24,
+                    mainAxisSpacing: 24,
+                    childAspectRatio: 0.9,
                   ),
                   itemBuilder: (context, index) {
+                    Map<String, dynamic> item = items[index];
+
                     return Column(
                       children: [
                         Expanded(
                           child: Container(
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
-                              color: Colors.yellow,
+                              color: item['background'],
                               borderRadius:
-                                  BorderRadiusDirectional.circular(24),
+                                  BorderRadiusDirectional.circular(16),
                             ),
-                            child: Image.network(
-                              images[index],
+                            child: Image.asset(
+                              item['logo'],
                               fit: BoxFit.cover,
                               width: 48,
                               height: 48,
@@ -135,22 +175,20 @@ class _Tugas32State extends State<Tugas32> {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        const Text(
-                          'Menu Title',
-                          style: TextStyle(
-                            fontSize: 12,
+                        Text(
+                          item['text'],
+                          style: const TextStyle(
+                            fontSize: 14,
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          softWrap: true,
                         ),
                       ],
                     );
                   }),
             ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('/'),
-              child: const Text('Ke tugas 3.1'),
-            )
           ],
         ),
       ),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomBottomBar extends StatelessWidget {
-  const CustomBottomBar({super.key});
+  final int currentIndex;
+
+  const CustomBottomBar({super.key, required this.currentIndex});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class CustomBottomBar extends StatelessWidget {
           label: 'Tugas 3.3',
         ),
       ],
-      currentIndex: 0, // Index untuk Tugas31
+      currentIndex: currentIndex, // Index untuk Tugas31
       onTap: (index) {
         if (index == 0) {
           Navigator.pushNamed(context, '/'); // Arahkan ke Tugas32
